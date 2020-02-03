@@ -1,7 +1,5 @@
 import this
 
-
-
 class Calc:
 
     def __init__(self):
@@ -33,6 +31,10 @@ class Calc:
         self.total = self.total ** 3.14159265359
         return self.total
 
+    def clear(self):
+        self.total = 0
+        return self.total
+
     def nth_power(self, n):
         for _ in range(0,n):
             self.total = self.total**self.total
@@ -42,5 +44,7 @@ if __name__ == "__main__":
     calcu = Calc()
     print(calcu.add(2))
     print(calcu.times_pi())
-    print(calcu.nth_power(8))
+    print(calcu.clear())
+    print(calcu.add(3))
+    print(calcu.nth_power(3))
     print("Done")
