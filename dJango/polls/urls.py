@@ -1,7 +1,10 @@
 from django.urls import path
-
+from django.contrib import admin
+from django.conf.urls import url
 from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('now', views.show_the_time),
+    path('hello', views.SayHello.as_view()),
 ]
