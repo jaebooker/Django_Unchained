@@ -26,7 +26,11 @@ def show_the_time(request):
     return HttpResponse(html)
 
 def question_detail(request, question_id):
-    return HttpResponse("Details for question %s" % question_id)
+    try:
+        question = Question.objects.get(pk=question_id)
+    except Question.DoesNotExist:
+        raise Http404("I'm sorry to say that the question you are searching for does not exist.")
+    return render(request, 'polls/detail.html',{'question':question})
 
 def vote(request, question_id):
     return HttpResponse("You've cast your vote for %s!" % question_id)
