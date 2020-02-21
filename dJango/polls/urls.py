@@ -3,6 +3,8 @@ from django.contrib import admin
 from django.conf.urls import url
 from . import views
 
+app_name = 'polls'
+
 urlpatterns = [
     path('', views.index, name='index'),
     path('now', views.show_the_time),
