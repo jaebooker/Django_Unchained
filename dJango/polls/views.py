@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from datetime import datetime
 from django.http import HttpResponse
 from django.views import View
@@ -26,10 +26,11 @@ def show_the_time(request):
     return HttpResponse(html)
 
 def question_detail(request, question_id):
-    try:
-        question = Question.objects.get(pk=question_id)
-    except Question.DoesNotExist:
-        raise Http404("I'm sorry to say that the question you are searching for does not exist.")
+    # try:
+    #     question = Question.objects.get(pk=question_id)
+    # except Question.DoesNotExist:
+    #     raise Http404("I'm sorry to say that the question you are searching for does not exist.")
+    question = get_object_or_404(Question, pk=question_id)
     return render(request, 'polls/detail.html',{'question':question})
 
 def vote(request, question_id):
