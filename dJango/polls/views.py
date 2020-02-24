@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from datetime import datetime
-from django.http import HttpResponse
-from django.views import View
+from django.http import HttpResponse, HttpResponseRedirect
+from django.views import View, generic
 from django.template import loader
 
 from .models import Question, Choice

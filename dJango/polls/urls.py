@@ -6,10 +6,10 @@ from . import views
 app_name = 'polls'
 
 urlpatterns = [
-    path('', views.index.as_view(), name='index'),
+    path('', views.IndexView.as_view(), name='index'),
     path('now', views.show_the_time),
     path('hello', views.SayHello.as_view()),
-    path('<int:pk>/results', views.results.as_view(), name='results'),
+    path('<int:pk>/results', views.ResultsView.as_view(), name='results'),
     path('<int:pk>/vote', views.vote, name='vote'),
-    path('<int:pk>', views.question_detail, name='question_detail'),
+    path('<int:pk>', views.DetailView.as_view(), name='detail'),
 ]
