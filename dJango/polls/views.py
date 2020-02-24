@@ -21,32 +21,32 @@ class ResultsView(generic.DetailView):
     model = Question
     template_name = 'polls/results.html'
 
-def index(request):
-    return HttpResponse("Good Morning, Starshine! The Earth says Hello!")
-
-def get_question_list(request):
-    latest_question_list = Question.objects.order_by('-pub_date')[:5]
-    # template = loader.get_template('polls/index.html')
-    #output = ', '.join([q.question_text for q in latest_question_list])
-    # context = {
-    #     'latest_question_list': latest_question_list,
-    # }
-    # return HttpResponse(template.render(context,request))
-    context = {'latest_question_list': latest_question_list}
-    return render(request,'polls/index.html',context)
+# def index(request):
+#     return HttpResponse("Good Morning, Starshine! The Earth says Hello!")
+#
+# def get_question_list(request):
+#     latest_question_list = Question.objects.order_by('-pub_date')[:5]
+#     # template = loader.get_template('polls/index.html')
+#     #output = ', '.join([q.question_text for q in latest_question_list])
+#     # context = {
+#     #     'latest_question_list': latest_question_list,
+#     # }
+#     # return HttpResponse(template.render(context,request))
+#     context = {'latest_question_list': latest_question_list}
+#     return render(request,'polls/index.html',context)
 
 def show_the_time(request):
     now = datetime.now()
     html = "<html><body><h1>It's {} and your time is up!</h1></body></html>".format(now)
     return HttpResponse(html)
 
-def question_detail(request, question_id):
-    # try:
-    #     question = Question.objects.get(pk=question_id)
-    # except Question.DoesNotExist:
-    #     raise Http404("I'm sorry to say that the question you are searching for does not exist.")
-    question = get_object_or_404(Question, pk=question_id)
-    return render(request, 'polls/detail.html',{'question':question})
+# def question_detail(request, question_id):
+#     # try:
+#     #     question = Question.objects.get(pk=question_id)
+#     # except Question.DoesNotExist:
+#     #     raise Http404("I'm sorry to say that the question you are searching for does not exist.")
+#     question = get_object_or_404(Question, pk=question_id)
+#     return render(request, 'polls/detail.html',{'question':question})
 
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
@@ -62,11 +62,11 @@ def vote(request, question_id):
         selected_choice.save()
         return HttpResponseRedirect(reverse('polls:results',args=(question.id,)))
 
-def results(request, question_id):
-    question = get_object_or_404(Question,pk=question_id)
-    return render(request,'polls/results.html',{'question':question})
-    # response = "The answer is... %s!"
-    # return HttpResponse(response % question_id)
+# def results(request, question_id):
+#     question = get_object_or_404(Question,pk=question_id)
+#     return render(request,'polls/results.html',{'question':question})
+#     # response = "The answer is... %s!"
+#     # return HttpResponse(response % question_id)
 
 class SayHello(View):
 
